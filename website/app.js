@@ -1,7 +1,7 @@
 /* Global Variables */
 
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
-const config = { API_KEY: 'valid-api-key-here' };
+const config = { API_KEY: '316620f131d1dfda31d1af3fd34c1033' };
 const apiKey = config.API_KEY; // Personal API Key for OpenWeatherMap API
 console.log(apiKey)
 
