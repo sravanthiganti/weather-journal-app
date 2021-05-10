@@ -1,8 +1,8 @@
 /* Global Variables */
 
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
-const config = { API_KEY: 'valid-api-key-here' };
-const apiKey = config.API_KEY; // Personal API Key for OpenWeatherMap API
+const config = { API_KEY: '316620f131d1dfda31d1af3fd34c1033' };
+const apiKey = `${config.API_KEY}&units=metric`; // Personal API Key for OpenWeatherMap API
 console.log(apiKey)
 
 // Create a new date instance dynamically with JS
@@ -33,7 +33,7 @@ function performAction(e) {
         getWeatherData(baseUrl, zipCode, apiKey)
             .then(function(data) {
                 // add data to POST request
-                postData('/add', { temp: convertKelvinToCelsius(data.main.temp), date: newDate, content: content });
+                postData('/add', { temp: data.main.temp, date: newDate, content: content });
             }).then(function() {
                 // call updateUI to update browser content
                 updateUI()
@@ -101,12 +101,3 @@ const updateUI = async() => {
         console.log('error', error);
     }
 };
-
-// helper function to convert temperature from Kelvin to Celsius
-function convertKelvinToCelsius(kelvin) {
-    if (kelvin < (0)) {
-        return 'below absolute zero (0 K)';
-    } else {
-        return (kelvin - 273.15).toFixed(2);
-    }
-}
